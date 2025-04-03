@@ -14,6 +14,8 @@ const ChangePassword = lazy(() => import
 ("../changePassword/ChangePassword"));
 const AboutUs = lazy(() => import
 ("../../pages/AboutUs/AboutUs"));
+const UserProfile = lazy(() => import
+("../../pages/UserProfile/UserProfile"));
 const AppRoutes=()=>{
 return(
     <Suspense fallback={<div>Loading</div>}>
@@ -28,7 +30,7 @@ return(
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/change-password" element={<ChangePassword />} />
-          <Route path="/profile" element={<ChangePassword />} />
+          <Route path="/profile" element={<UserProfile />} />
         </Route>
 
         {/* Routes accessible by everyone */}

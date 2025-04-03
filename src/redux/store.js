@@ -6,6 +6,7 @@ import authReducer from './loginSlice';
 import passwordReducer from './passwordSlice';
 import newsletterReducer   from "./newsletterSlice";
 
+import userReducer from './userSlice';
 
 export const store=configureStore({
     reducer:{
@@ -14,5 +15,6 @@ export const store=configureStore({
         auth:authReducer,
         password: passwordReducer,
         newsletter: newsletterReducer ,
+        user: userReducer,
     }
 })
