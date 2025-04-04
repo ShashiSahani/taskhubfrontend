@@ -8,7 +8,7 @@ import { Button } from "../../components/ui/button";
 import { CircleChevronRight } from "lucide-react";
 
 const BlogIndex = () => {
-  const [search, setSearch] = useState("");
+  const [search] = useState("");
 
   const dispatch = useDispatch();
   const { blogs = [], loading, error } = useSelector((state) => state.blogs);
@@ -40,9 +40,7 @@ const BlogIndex = () => {
       blog.title.toLowerCase().includes(search.toLowerCase()) ||
       blog.description.toLowerCase().includes(search.toLowerCase())
   );
-  const handleBlogClick = (id) => {
-    navigate(`/blog/${id}`);
-  };
+
   console.log(isAuthenticated, "isAuthenticated");
   const handleReadMoreClick = (id) => {
     if (!isAuthenticated) {
