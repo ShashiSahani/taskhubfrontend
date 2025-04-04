@@ -152,23 +152,24 @@ function HomeIndex() {
         <p className="text-gray-600 mt-2">
           Stay updated with the latest tech trends directly in your inbox.
         </p>
-        <div className="flex justify-center  gap-2 mt-4">
-          <Input
-            placeholder="Enter your email"
-            className="w-64"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <div className="flex flex-col md:flex-row justify-center items-center gap-2 mt-4 px-4">
+  <Input
+    placeholder="Enter your email"
+    className="w-full md:w-64"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+  />
 
-          <Button
-            onClick={handleNewsLetterSubscibe}
-            disabled={status === "loading"}
-            icon={Mail}
-          >
-            {" "}
-            {status === "loading" ? "Subscribing..." : "Subscribe"}
-          </Button>
-        </div>
+  <Button
+    onClick={handleNewsLetterSubscibe}
+    disabled={status === "loading"}
+    icon={Mail}
+    className="md:w-auto"
+  >
+    {status === "loading" ? "Subscribing..." : "Subscribe"}
+  </Button>
+</div>
+
       </div>
     </div>
   );
