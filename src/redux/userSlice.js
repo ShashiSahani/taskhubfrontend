@@ -35,7 +35,6 @@ const initialState = {
   error: null,
 };
 
-console.log("Loaded user from Redux state:", initialState.user); // Debugging log
 
 
 const userSlice = createSlice({

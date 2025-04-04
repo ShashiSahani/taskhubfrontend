@@ -39,7 +39,6 @@ export const addBlogApi = async (blogData) => {
     }
 
     const data = await response.json();
-    console.log("Blog added:", data);
     return data;
   } catch (error) {
     console.error("Error adding blog:", error);
@@ -47,7 +46,6 @@ export const addBlogApi = async (blogData) => {
   }
 };
 
-// Delete a blog (fix incorrect URL syntax)
 export const deleteBlogApi = async (id) => {
   try {
     const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
@@ -56,7 +54,6 @@ export const deleteBlogApi = async (id) => {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
 
-    console.log(`Blog with ID ${id} deleted.`);
     return { success: true };
   } catch (error) {
     console.error("Error deleting blog:", error);

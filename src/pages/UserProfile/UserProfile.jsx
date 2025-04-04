@@ -22,7 +22,6 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (user) {
-      console.log("User from Redux:", user);
       setFormData((prev) => ({
         ...prev,
         name: user.name || "",
@@ -74,7 +73,8 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md my-5">
+    <div className="px-4">
+ <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md my-5 ">
       <h2 className="text-xl font-bold text-center my-2 uppercase text-primary-dark">Update Profile</h2>
       {error && <p className="text-red-900 text-center mb-3 bg-red-200 rounded-md py-1">{error}</p>}
 
@@ -98,7 +98,7 @@ const UserProfile = () => {
               className="hidden"
               onChange={handleFileChange}
             />
-            <Camera className="w-5 h-5 text-gray-600 hover:text-gray-800" />
+            <Camera className="w-5 h-5 text-primary-dark hover:text-gray-800" />
             
             {/* Tooltip on hover */}
             <span className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
@@ -155,24 +155,32 @@ const UserProfile = () => {
       </form>
       {imageModel && (
   <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
-    <div className="relative  p-4 rounded-lg w-full max-w-md mx-auto">
-      <button
-        onClick={() => setImageModel(false)}
-        className="absolute top-2 right-2 text-gray-600 hover:text-black"
-      >
-        <XCircle className="w-6 h-6 text-white" />
-      </button>
-      <img
-        src={previewImage}
-        alt="Full Preview"
-        className="w-full h-auto max-h-[70vh] rounded-lg object-contain"
-      />
+    <div className="w-full max-w-md mx-auto">
+      <div className="relative">
+        {/* Close Icon on top-right of image */}
+        <button
+          onClick={() => setImageModel(false)}
+          className="absolute top-2 right-2 z-10"
+        >
+          <XCircle className="w-6 h-6 text-white hover:text-red-500" />
+        </button>
+
+        {/* Image */}
+        <img
+          src={previewImage}
+          alt="Full Preview"
+          className="w-full h-auto max-h-[70vh] rounded-lg object-contain"
+        />
+      </div>
     </div>
   </div>
 )}
 
 
+
     </div>
+    </div>
+   
   );
 };
 
