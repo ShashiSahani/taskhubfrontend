@@ -16,11 +16,13 @@ const UserProfile = () => {
   });
 
   const [previewImage, setPreviewImage] = useState(null);
+  const [imageModel, setImageModel] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
 
 
   useEffect(() => {
     if (user) {
+      console.log("User from Redux:", user);
       setFormData((prev) => ({
         ...prev,
         name: user.name || "",
@@ -53,7 +55,7 @@ const UserProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user?.id) return alert("User data not loaded. Please refresh.");
+    if (!user?._id) return alert("User data not loaded. Please refresh.");
 
     const data = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
@@ -67,7 +69,7 @@ const UserProfile = () => {
     });
 
     setIsUploading(true);
-    await dispatch(updateUserProfile({ userId: user.id, formData: data }));
+    await dispatch(updateUserProfile({ userId: user._id, formData: data }));
     setIsUploading(false);
   };
 
@@ -82,6 +84,8 @@ const UserProfile = () => {
           <img
             src={previewImage}
             alt="Profile Preview"
+  onClick={() => setImageModel(true)}
+
             className="w-full h-full rounded-full object-cover border-4 border-gray-300 "
           />
 
@@ -114,9 +118,9 @@ const UserProfile = () => {
           )}
         </div>
       {[
-          { name: "name", type: "text", icon: <User className="w-5 h-5 text-gray-500" /> },
-          { name: "email", type: "email", icon: <Mail className="w-5 h-5 text-gray-500" /> },
-          { name: "age", type: "number", icon: <CalendarDays className="w-5 h-5 text-gray-500" /> },
+          { name: "name", type: "text", icon: <User className="w-5 h-5 text-primary-dark" /> },
+          { name: "email", type: "email", icon: <Mail className="w-5 h-5 text-primary-dark" /> },
+          { name: "age", type: "number", icon: <CalendarDays className="w-5 h-5 text-primary-dark" /> },
         ].map(({ name, type, icon }) => (
           <div key={name} className="flex items-center border rounded p-2 mb-2">
             {icon}
@@ -149,6 +153,25 @@ const UserProfile = () => {
           {loading || isUploading ? "Updating..." : "Save  Profile"}
         </button>
       </form>
+      {imageModel && (
+  <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
+    <div className="relative  p-4 rounded-lg w-full max-w-md mx-auto">
+      <button
+        onClick={() => setImageModel(false)}
+        className="absolute top-2 right-2 text-gray-600 hover:text-black"
+      >
+        <XCircle className="w-6 h-6 text-white" />
+      </button>
+      <img
+        src={previewImage}
+        alt="Full Preview"
+        className="w-full h-auto max-h-[70vh] rounded-lg object-contain"
+      />
+    </div>
+  </div>
+)}
+
+
     </div>
   );
 };

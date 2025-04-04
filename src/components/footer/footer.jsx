@@ -38,12 +38,12 @@ function Footer() {
         <div className="mt-6 text-sm opacity-75 flex justify-center items-center space-x-2">
           <MapPin size={20} className="hover:text-white"/>
           <a
-            href="https://www.google.com/maps?q=1304+Officer+City+1,+Housing+Society,+Ghaziabad,+Uttar+Pradesh"
+            href="https://maps.google.com/maps?width=600&height=400&hl=en&q=Indraprasth+Tower,+Drive-In+Road,+Ahmedabad,+Gujarat&t=&z=14&ie=UTF8&iwloc=B&output=embed"
             target="_blank"
             rel="noopener noreferrer"
             className=" hover:text-white"
           >
-            1304 Officer City 1, Housing Society, Ghaziabad, Uttar Pradesh
+            Indraprasth Tower, Drive-In Road, Ahmedabad, Gujarat
           </a>
         </div>
 
@@ -57,7 +57,7 @@ function Footer() {
                 scrolling="no"
                 marginHeight="0"
                 marginWidth="0"
-                src="https://maps.google.com/maps?width=600&height=400&hl=en&q=1304+Officer+City+1,+Housing+Society,+Ghaziabad,+Uttar+Pradesh&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+                src="https://maps.google.com/maps?width=600&height=400&hl=en&q=Indraprasth+Tower,+Drive-In+Road,+Ahmedabad,+Gujarat&t=&z=14&ie=UTF8&iwloc=B&output=embed"
               ></iframe>
             </div>
           </div>
