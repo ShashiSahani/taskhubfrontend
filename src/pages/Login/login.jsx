@@ -23,47 +23,49 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen ">
-      <div className=" p-6   w-96">
-        <h1 className="text-2xl  text-center font-bold text-primary-dark hover:text-white text-shadow-lg cursor-pointer">
+    <div className="flex justify-center items-center min-h-[80vh] bg-primary-ligter px-4">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6">
+        <h1 className="text-3xl font-bold text-center text-primary-dark mb-6">
           Login
         </h1>
-        {error && <p className="text-red-500 text-center">{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block mb-1">Email</label>
+        {error && <p className="text-red-900 text-center mb-3 bg-red-200 rounded-md py-1">{error}</p>}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">Email</label>
             <input
               type="email"
-              className="w-full border rounded px-3 py-2"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@gmail.com"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark"
             />
           </div>
-          <div className="mb-4 relative">
-            <label className="block mb-1 ">Password</label>
+
+          <div className="relative">
+            <label className="block mb-1 font-medium text-gray-700">Password</label>
             <input
               type={showPassword ? "text" : "password"}
-              className="w-full border rounded px-3 py-2"
               value={password}
-              placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark"
             />
             <button
               type="button"
-              className="absolute right-3 top-10 text-gray-500 hover:text-gray-700"
               onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-9 text-gray-500 hover:text-gray-700"
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           </div>
+
           <button
             type="submit"
-            className="w-full bg-primary-dark text-white py-2 rounded hover:bg-primary-dark/80"
+            className="w-full bg-primary-dark text-white py-2 rounded-md hover:bg-primary-dark/90 transition-all duration-200"
             disabled={isLoading}
           >
             {isLoading ? (
-              <div className="flex justify-center items-center w-full">
+              <div className="flex justify-center items-center gap-2">
                 Logging in <Spinner size="24px" color="white" />
               </div>
             ) : (
